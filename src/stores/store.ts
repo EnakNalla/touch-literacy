@@ -8,6 +8,11 @@ export default class Store {
     name: 'default',
     list: []
   };
+  word = '';
+  results: Result[] = [];
+  tries = 0;
+  index = 0;
+  gameFinished = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -42,9 +47,43 @@ export default class Store {
     this.wordList.list = this.mapWordlistIndex(newList);
   };
 
-  mapWordlistIndex = (list: WordListItem[]) =>
-    list.map((item, index) => {
+  mapWordlistIndex = (list: WordListItem[]) => {
+    return list.map((item, index) => {
       item.index = index;
       return item;
     });
+  };
+
+  speak = (word: string) => {
+    window.speechSynthesis.cancel();
+
+    const utterance = new window.SpeechSynthesisUtterance(word);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  initGame = () => {
+    this.gameFinished = false;
+    this.index = 0;
+    this.tries = 0;
+    this.word = this.wordList.list.find(item => item.index === this.index)!.word;
+  };
+
+  handleCorrectGuess = () => {
+    this.results.push({
+      index: this.index,
+      tries: this.tries,
+      word: this.word
+    });
+
+    this.index++;
+    this.tries = 0;
+
+    if (this.index === this.wordList.list.length) {
+      this.gameFinished = true;
+    } else {
+      this.word = this.wordList.list.find(item => item.index === this.index)!.word;
+    }
+  };
+
+  handleIncorrectGuess = () => this.tries++;
 }
