@@ -2,15 +2,18 @@ import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
 import Layout from '~/components/Layout';
+import StoreProvider from '~/stores/StoreProvider';
 import '~/styles/globals.css';
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
     <SessionProvider session={session}>
       <ThemeProvider enableSystem>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <StoreProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </StoreProvider>
       </ThemeProvider>
     </SessionProvider>
   );
