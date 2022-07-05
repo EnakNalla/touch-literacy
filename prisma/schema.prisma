@@ -35,13 +35,14 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  wordLists     WordList[]
 }
 
 model VerificationToken {
@@ -51,4 +52,15 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+type WordListItem {
+  index Int
+  id    Int
+  word  String
+}
+
+type WordList {
+  name String
+  list WordListItem[]
 }
