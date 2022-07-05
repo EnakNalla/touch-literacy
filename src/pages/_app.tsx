@@ -1,6 +1,7 @@
 import { SessionProvider } from 'next-auth/react';
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
+import 'react-toastify/dist/ReactToastify.css';
 import Layout from '~/components/Layout';
 import StoreProvider from '~/stores/StoreProvider';
 import '~/styles/globals.css';

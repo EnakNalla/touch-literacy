@@ -5,7 +5,7 @@ import UserDropdown from './UserDropdown';
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 mb-8">
       <div className="flex-1">
         <Link href="/">
           <a className="btn btn-ghost">

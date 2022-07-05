@@ -1,8 +1,9 @@
+import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { useStore } from '~/stores/StoreProvider';
 
 const AddWord = () => {
-  const { addWord } = useStore();
+  const { addWord, wordList } = useStore();
   const [word, setWord] = useState('');
 
   const handleSubmit = () => {
@@ -12,6 +13,7 @@ const AddWord = () => {
 
   return (
     <>
+      <h4 className="text-sm mb-2">Current word list: {wordList.name}</h4>
       <label htmlFor="word-input" className="label label-text">
         Add word
       </label>
@@ -37,4 +39,4 @@ const AddWord = () => {
   );
 };
 
-export default AddWord;
+export default observer(AddWord);

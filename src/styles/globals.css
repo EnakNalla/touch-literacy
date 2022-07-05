@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* TODO fix overrides https://fkhadra.github.io/react-toastify/how-to-style#override-css-variables */
+
+.Toastify__toast-theme--dark {
+  background-color: hsl(var(--b2));
+}
+.Toastify__toast-theme--light {
+  background-color: hsl(var(--b2));
+}
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background-color: hsl(var(--p));
+}
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  background-color: hsl(var(--in));
+}
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  color: hsl(var(--su));
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  background-color: hsl(var(--wa));
+}
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  background-color: hsl(var(--er));
+}
+
+.Toastify__progress-bar--info {
+  color: hsl(var(--in));
+}
+.Toastify__progress-bar--success {
+  color: hsl(var(--su));
+}
+.Toastify__progress-bar--warning {
+  color: hsl(var(--wa));
+}
+.Toastify__progress-bar--error {
+  color: hsl(var(--er));
+}

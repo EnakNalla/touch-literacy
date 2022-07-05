@@ -31,7 +31,7 @@ const WordList = () => {
       onDragEnd={reorder}
     >
       <SortableContext items={wordList.list} strategy={verticalListSortingStrategy}>
-        <div className="max-w-lg">
+        <div className="max-w-xl">
           {wordList.list.map(item => (
             <ListItem item={item} key={item.id} />
           ))}
