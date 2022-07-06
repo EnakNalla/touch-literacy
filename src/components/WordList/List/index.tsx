@@ -16,8 +16,6 @@ import { useStore } from '~/stores/StoreProvider';
 import ListItem from './ListItem';
 import ListItemOverlay from './ListItemOverlay';
 
-// TODO fix ListItem shadows on dark mode
-
 const WordList = () => {
   const sensors = useSensors(useSensor(PointerSensor));
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);

@@ -12,7 +12,7 @@ const ListItemOverlay = ({ item }: Props) => {
 
   return (
     <div
-      className="my-6 p-6 drop-shadow-2xl bg-base-100 shadow-base-300 border border-inherit rounded flex justify-between"
+      className="my-6 p-6 drop-shadow-2xl alert flex justify-between"
       onMouseEnter={() => deleteBtn.current!.classList.remove('invisible')}
       onMouseLeave={() => deleteBtn.current!.classList.add('invisible')}
     >

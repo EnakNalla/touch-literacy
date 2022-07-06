@@ -25,12 +25,13 @@ const ListItem = ({ item, activeId }: Props) => {
     transition,
     transform: CSS.Transform.toString(transform),
     touchAction: 'none',
-    opacity: activeId === item.id ? '0.5' : undefined
+    opacity: activeId === item.id ? '0.5' : undefined,
+    backgroundColor: 'hsl(var(--b2, var(--b1)) / var(--tw-bg-opacity))'
   };
 
   return (
     <div
-      className="my-6 p-6 shadow-md shadow-base-300 border border-inherit rounded flex justify-between"
+      className="my-6 p-6 alert shadow-lg flex justify-between"
       ref={setNodeRef}
       id={item.id.toString()}
       style={style}
@@ -45,13 +46,13 @@ const ListItem = ({ item, activeId }: Props) => {
             onClick={() => removeWord(item.id)}
             role="button"
             size="24"
-            className="hover:text-red-600 hover:bg-slate-100  border-slate-100 hover:border rounded"
+            className="hover:text-red-600 hover:bg-base-100  border-base-100 hover:border rounded"
           />
         </span>
 
         <span {...attributes} {...listeners} ref={setActivatorNodeRef} className="me-3">
           <MdDragIndicator
-            className="ml-2 hover:bg-slate-100 rounded hover:border border-slate-100"
+            className="ml-2 hover:bg-base-100 rounded hover:border border-base-100"
             size="24"
           />
         </span>
