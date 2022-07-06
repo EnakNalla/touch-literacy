@@ -11,7 +11,7 @@ const Home = () => {
       <div className="alert shadow-lg text-center block">
         {wordList.list.length ? (
           <button
-            className="btn btn-lg btn-primary"
+            className="btn btn-block btn-primary"
             onClick={() => {
               initGame();
               router.push('/game');
@@ -23,7 +23,7 @@ const Home = () => {
           <>
             <h1 className="block text-xl font-bold mb-4">Add words to start</h1>
             <Link href="/config">
-              <a role="button" className="btn btn-lg btn-secondary">
+              <a role="button" className="btn btn-block btn-secondary">
                 Configure
               </a>
             </Link>

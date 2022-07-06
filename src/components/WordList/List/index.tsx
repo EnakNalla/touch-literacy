@@ -16,6 +16,8 @@ import { useStore } from '~/stores/StoreProvider';
 import ListItem from './ListItem';
 import ListItemOverlay from './ListItemOverlay';
 
+// TODO fix ListItem shadows on dark mode
+
 const WordList = () => {
   const sensors = useSensors(useSensor(PointerSensor));
   const [activeId, setActiveId] = useState<UniqueIdentifier | null>(null);
@@ -28,12 +30,16 @@ const WordList = () => {
       measuring={{ droppable: { strategy: MeasuringStrategy.Always } }}
       onDragStart={({ active }) => setActiveId(active.id)}
       onDragCancel={() => setActiveId(null)}
-      onDragEnd={reorder}
+      onDragEnd={e => {
+        setActiveId(null);
+
+        reorder(e);
+      }}
     >
       <SortableContext items={wordList.list} strategy={verticalListSortingStrategy}>
         <div className="max-w-xl">
           {wordList.list.map(item => (
-            <ListItem item={item} key={item.id} />
+            <ListItem item={item} key={item.id} activeId={activeId} />
           ))}
         </div>
       </SortableContext>
