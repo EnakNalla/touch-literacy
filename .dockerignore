@@ -1,0 +1,15 @@
+Dockerfile
+.dockerignore
+node_modules
+yarn-debug.log*
+README.md
+.next
+docker
+.git
+deploy.sh
+.env
+.docker.env
+commitlint.config.js
+.prettierrc
+.prettierignore
+.husky/
