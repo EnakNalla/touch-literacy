@@ -14,7 +14,6 @@ import { observer } from 'mobx-react-lite';
 import { useState } from 'react';
 import { useStore } from '~/stores/StoreProvider';
 import ListItem from './ListItem';
-import ListItemOverlay from './ListItemOverlay';
 
 const WordList = () => {
   const sensors = useSensors(useSensor(PointerSensor));
@@ -37,7 +36,7 @@ const WordList = () => {
       <SortableContext items={wordList.list} strategy={verticalListSortingStrategy}>
         <div className="max-w-xl">
           {wordList.list.map(item => (
-            <ListItem item={item} key={item.id} activeId={activeId} />
+            <ListItem item={item} key={item.id} activeId={activeId} overlay={false} />
           ))}
         </div>
       </SortableContext>
@@ -49,7 +48,13 @@ const WordList = () => {
           })
         }}
       >
-        {activeId && <ListItemOverlay item={wordList.list.find(item => item.id === activeId)!} />}
+        {activeId && (
+          <ListItem
+            item={wordList.list.find(item => item.id === activeId)!}
+            activeId={null}
+            overlay
+          />
+        )}
       </DragOverlay>
     </DndContext>
   );
